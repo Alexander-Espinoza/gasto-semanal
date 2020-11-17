@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     cantidadPresupuesto.presupuesto = presupuestoUsuario;
     cantidadPresupuesto.restante = presupuestoUsuario;
     cantidadPresupuesto.guardarLocal();
-    if (presupuestoUsuario === null || presupuestoUsuario === "") {
+    if (presupuestoUsuario === null || presupuestoUsuario === "" || isNaN(presupuestoUsuario)) {
       window.location.reload();
     } else {
       token.guardarToken(true);
@@ -54,3 +54,9 @@ document.addEventListener("submit", function (e) {
     //console.log(cantidadPresupuesto.restante)
   }
 });
+const eraserLocalStorage = document.querySelector(".eraserAll");
+eraserLocalStorage.addEventListener('click', ()=> {
+  console.log("borrando");
+  localStorage.clear();
+  window.location.reload();
+})
