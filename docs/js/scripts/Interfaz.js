@@ -5,11 +5,12 @@ class Interfaz {
   }
   mostrarPresupuestoRestante(restante, alerta) {
     const restanteSpan = document.querySelector("span#restante");
-    
+
     restanteSpan.innerHTML = `${restante}`;
-    const restanteDiv = document.querySelector(".restante");  //console.log(restanteDiv.classList)
-    if(restanteDiv.classList.length == 4 ){
-    restanteDiv.classList.remove("alertInicio");}   //console.log(restanteDiv.classList.value)
+    const restanteDiv = document.querySelector(".restante"); //console.log(restanteDiv.classList)
+    if (restanteDiv.classList.length == 4) {
+      restanteDiv.classList.remove("alertInicio");
+    } //console.log(restanteDiv.classList.value)
     if (alerta === "alta") {
       restanteDiv.classList.remove("alert-success", "alert-warning");
       restanteDiv.classList.add("alert-danger");
@@ -52,5 +53,10 @@ class Interfaz {
       `;
     //Insrtar al HTML
     gastosListado.appendChild(li);
+  }
+  limpiarInputs() {
+    document.getElementById("gasto").value = "";
+    document.getElementById("cantidad").value = "";
+    document.getElementById("gasto").focus();
   }
 }

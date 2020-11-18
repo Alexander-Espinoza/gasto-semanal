@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     }
   }
+  
 });
 
 document.addEventListener("submit", function (e) {
@@ -88,11 +89,15 @@ document.addEventListener("submit", function (e) {
 
     //
   }
+  ui.limpiarInputs();
 });
 
 const eraserLocalStorage = document.querySelector(".eraserAll");
 eraserLocalStorage.addEventListener("click", () => {
-  console.log("borrando");
-  localStorage.clear();
-  window.location.reload();
+  let login = confirm("¿Estás seguro de cerrar sesión?");
+  if(login){
+    console.log("borrando");
+    localStorage.clear();
+    window.location.reload();
+  }
 });
