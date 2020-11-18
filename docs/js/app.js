@@ -28,16 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Token = false
   else {
     const presupuestoUsuario = prompt("Cuál es tu presupuesto semanal?");
-    cantidadPresupuesto.presupuesto = presupuestoUsuario;
-    cantidadPresupuesto.restante = presupuestoUsuario;
-
-    // Guardar en LocalStorage
-    local.guardarToken(true);
-    local.guardarDatosDinero(
-      cantidadPresupuesto.presupuesto,
-      cantidadPresupuesto.restante,
-      cantidadPresupuesto.alerta
-    );
 
     if (
       presupuestoUsuario === null ||
@@ -46,6 +36,16 @@ document.addEventListener("DOMContentLoaded", function () {
     ) {
       window.location.reload();
     } else {
+      cantidadPresupuesto.presupuesto = presupuestoUsuario;
+      cantidadPresupuesto.restante = presupuestoUsuario;
+
+      // Guardar en LocalStorage
+      local.guardarToken(true);
+      local.guardarDatosDinero(
+        cantidadPresupuesto.presupuesto,
+        cantidadPresupuesto.restante,
+        cantidadPresupuesto.alerta
+      );
       //console.log(token.estado);
 
       ui.mostrarPresupuesto(cantidadPresupuesto.presupuesto);
@@ -68,7 +68,6 @@ document.addEventListener("submit", function (e) {
   if (nombreGasto === "" || cantidadGasto === "") {
     ui.imprimirMensaje("Hubo un error", "error");
   } else {
-
     ui.imprimirMensaje("Correcto", "ok");
     ui.insertarGastoListado(nombreGasto, cantidadGasto);
     cantidadPresupuesto.presupuestoRestante(cantidadGasto); //console.log(cantidadPresupuesto.restante);
@@ -88,7 +87,6 @@ document.addEventListener("submit", function (e) {
     local.guardarListaGastos(nombreGasto, cantidadGasto);
 
     //
-    
   }
 });
 
