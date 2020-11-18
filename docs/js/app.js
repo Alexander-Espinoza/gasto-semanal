@@ -1,27 +1,39 @@
 const formulario = document.getElementById("agregar-gasto");
 let cantidadPresupuesto;
-const token = new Token();
-const gastos = new Gastos();
-
-let estado = token.leerToken();
+let lista;
+const local = new LocalStorage();
 
 document.addEventListener("DOMContentLoaded", function () {
   cantidadPresupuesto = new Presupuesto();
 
   const ui = new Interfaz();
-  //debugger;
-  if (estado === "true") {
-    cantidadPresupuesto.leerLocal();
+  // debugger;
+  // Token = true
+  if (local.estado === "true") {
+    cantidadPresupuesto.presupuesto = local.presupuesto;
+    cantidadPresupuesto.restante = local.restante;
+    cantidadPresupuesto.alerta = local.alerta;
+    lista = local.lista;
     ui.mostrarPresupuesto(cantidadPresupuesto.presupuesto);
     ui.mostrarPresupuestoRestante(
       cantidadPresupuesto.restante,
       cantidadPresupuesto.alerta
     );
-  } else {
+  }
+  // Token = false
+  else {
     const presupuestoUsuario = prompt("Cuál es tu presupuesto semanal?");
     cantidadPresupuesto.presupuesto = presupuestoUsuario;
     cantidadPresupuesto.restante = presupuestoUsuario;
-    cantidadPresupuesto.guardarLocal();
+
+    // Guardar en LocalStorage
+    local.guardarToken(true);
+    local.guardarDatosDinero(
+      cantidadPresupuesto.presupuesto,
+      cantidadPresupuesto.restante,
+      cantidadPresupuesto.alerta
+    );
+
     if (
       presupuestoUsuario === null ||
       presupuestoUsuario === "" ||
@@ -29,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
     ) {
       window.location.reload();
     } else {
-      token.guardarToken(true);
       //console.log(token.estado);
 
       ui.mostrarPresupuesto(cantidadPresupuesto.presupuesto);
@@ -52,9 +63,6 @@ document.addEventListener("submit", function (e) {
   if (nombreGasto === "" || cantidadGasto === "") {
     ui.imprimirMensaje("Hubo un error", "error");
   } else {
-    
-    // Guardar datos en LocalStorage
-    gastos.guardarLista(nombreGasto, cantidadGasto);
 
     ui.imprimirMensaje("Correcto", "ok");
     ui.insertarGastoListado(nombreGasto, cantidadGasto);
@@ -63,7 +71,19 @@ document.addEventListener("submit", function (e) {
       cantidadPresupuesto.restante,
       cantidadPresupuesto.alerta
     );
-    cantidadPresupuesto.guardarLocal(); //console.log(cantidadPresupuesto.restante)
+
+    // Guardar en LocalStorage
+    local.guardarDatosDinero(
+      cantidadPresupuesto.presupuesto,
+      cantidadPresupuesto.restante,
+      cantidadPresupuesto.alerta
+    );
+
+    // Guardar datos lista
+    local.guardarListaGastos(nombreGasto, cantidadGasto);
+
+    //
+    
   }
 });
 
