@@ -7,11 +7,9 @@ class Interfaz {
     const restanteSpan = document.querySelector("span#restante");
     
     restanteSpan.innerHTML = `${restante}`;
-    const restanteDiv = document.querySelector(".restante");
-    console.log(restanteDiv.classList)
+    const restanteDiv = document.querySelector(".restante");  //console.log(restanteDiv.classList)
     if(restanteDiv.classList.length == 4 ){
-    restanteDiv.classList.remove("alertInicio");}
-    console.log(restanteDiv.classList.value)
+    restanteDiv.classList.remove("alertInicio");}   //console.log(restanteDiv.classList.value)
     if (alerta === "alta") {
       restanteDiv.classList.remove("alert-success", "alert-warning");
       restanteDiv.classList.add("alert-danger");
