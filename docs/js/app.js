@@ -19,6 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
       cantidadPresupuesto.restante,
       cantidadPresupuesto.alerta
     );
+    local.obtenerLista();
+    // Mostrar lista de gastos de localstorage
+    for (const element of local.lista) {
+      ui.insertarGastoListado(element.nombre, element.cantidad);
+    }
   }
   // Token = false
   else {

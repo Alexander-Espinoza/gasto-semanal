@@ -33,4 +33,9 @@ class LocalStorage {
       console.log(this.alerta);
       console.log(this.estado);
   }
+
+  obtenerLista(){
+    this.listaString = localStorage.getItem("lista");
+    this.lista = JSON.parse(this.listaString)
+  }
 }
