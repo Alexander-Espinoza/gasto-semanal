@@ -5,7 +5,6 @@ const local = new LocalStorage();
 
 document.addEventListener("DOMContentLoaded", function () {
   cantidadPresupuesto = new Presupuesto();
-
   const ui = new Interfaz();
   // debugger;
   // Token = true
@@ -23,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mostrar lista de gastos de localstorage
     for (const element of local.lista) {
       ui.insertarGastoListado(element.nombre, element.cantidad);
+
     }
   }
   // Token = false
@@ -59,13 +59,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("submit", function (e) {
-  e.preventDefault();
+  //e.preventDefault();
 
   const nombreGasto = document.getElementById("gasto").value;
   const cantidadGasto = document.getElementById("cantidad").value;
-
   const ui = new Interfaz();
-
+  ui.limpiarInputs();
+  
   if (nombreGasto === "" || cantidadGasto === "") {
     ui.imprimirMensaje("Hubo un error", "error");
   } else {
@@ -86,10 +86,9 @@ document.addEventListener("submit", function (e) {
 
     // Guardar datos lista
     local.guardarListaGastos(nombreGasto, cantidadGasto);
-
     //
   }
-  ui.limpiarInputs();
+  
 });
 
 const eraserLocalStorage = document.querySelector(".eraserAll");
@@ -101,3 +100,4 @@ eraserLocalStorage.addEventListener("click", () => {
     window.location.reload();
   }
 });
+

@@ -37,5 +37,6 @@ class LocalStorage {
   obtenerLista(){
     this.listaString = localStorage.getItem("lista");
     this.lista = JSON.parse(this.listaString)
+    
   }
 }

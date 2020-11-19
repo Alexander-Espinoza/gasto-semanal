@@ -42,3 +42,17 @@ h2 {
     background-color: white;
     color: white;
 }
+
+.eliminar {
+    background-image: url(../assets/eliminar.svg);
+    background-repeat: no-repeat;
+    background-size: 26px;
+    height: 29px;
+    width: 29px;
+    border-radius: 16px;
+    outline-style: none !important;
+}
+
+.eliminar:focus {
+    outline: none !important;
+}

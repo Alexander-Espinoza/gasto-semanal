@@ -14,8 +14,10 @@ class Presupuesto {
   comprobarPresupuesto() {
     if (this.restante < this.presupuesto / 4) {
       this.alerta = "alta";
+      
     } else if (this.restante < this.presupuesto / 2) {
       this.alerta = "media";
+      
     }
   }
   /* leerLocal() {

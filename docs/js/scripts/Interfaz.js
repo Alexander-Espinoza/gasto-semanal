@@ -21,6 +21,7 @@ class Interfaz {
       restanteDiv.classList.remove("alert-success", "alert-warning");
       restanteDiv.classList.add("alert-success");
     }
+
   }
   imprimirMensaje(mensaje, tipo) {
     const divMensaje = document.createElement("div");
@@ -45,11 +46,13 @@ class Interfaz {
     // Crear un LI
     const li = document.createElement("li");
     li.className =
-      "list-group-item d-flex justify-content-between align-items-center";
+      "list-group-item d-flex bd-highlight  align-items-center mt-2";
     //Insertar el gasto
     li.innerHTML = `
-            ${nombre}
-            <span class="badge badge-primary badge-pill">S/. ${cantidad}</span>
+            <div class="mr-auto p-1 bd-highlight">${nombre}</div>
+            <span class="p-2 bd-highlight badge badge-primary badge-pill mr-4 ml-2">S/. ${cantidad}</span>
+            <button class="eliminar p-1 bd-highlight"></button>
+            
       `;
     //Insrtar al HTML
     gastosListado.appendChild(li);
