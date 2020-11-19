@@ -1,23 +1,27 @@
 
-window.onload = function () {
+function eliminarYa() {
     const eliminarGasto = document.querySelectorAll(".eliminar");
     for (const iterator of eliminarGasto) {
         iterator.addEventListener("click", (e) => {
             let gasto = e.target.parentNode.firstChild.nextSibling.textContent
-            console.log("Aqui")
+            
             e.target.parentNode.remove();
-            console.log(local.lista)
+            
             let listaActualizada = local.lista
-            console.log(listaActualizada)
+            
             for (const key in listaActualizada) {
                 
                 if (listaActualizada[key].nombre == gasto) {
                     console.log("match")
                     cantidadPresupuesto.restante+=Number(listaActualizada[key].cantidad);
-                    
+                    cantidadPresupuesto.comprobarPresupuesto();
                     local.guardarDatosDinero(cantidadPresupuesto.presupuesto, cantidadPresupuesto.restante, cantidadPresupuesto.alerta)
                     listaActualizada.splice(key,1)
-                    
+                    const ui = new Interfaz();
+                    ui.mostrarPresupuestoRestante(
+                        cantidadPresupuesto.restante,
+                        cantidadPresupuesto.alerta
+                      );
                 }
                 
             }
@@ -28,5 +32,4 @@ window.onload = function () {
             
         })
     }
-    
-    }
+}  

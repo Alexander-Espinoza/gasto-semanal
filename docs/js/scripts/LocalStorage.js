@@ -13,9 +13,11 @@ class LocalStorage {
   }
 
   guardarDatosDinero(presupuesto, restante, alerta) {
+    console.log("Guardando presupuesto, restante y alerta")
     localStorage.setItem("presupuesto", presupuesto);
     localStorage.setItem("restante", restante);
     localStorage.setItem("alerta", alerta);
+    this.sincronizandoDatos(presupuesto, restante,alerta);
   }
   
   guardarListaGastos(nombre, cantidad) {
@@ -38,5 +40,11 @@ class LocalStorage {
     this.listaString = localStorage.getItem("lista");
     this.lista = JSON.parse(this.listaString)
     
+  }
+  sincronizandoDatos(presupuesto, restante, alerta){
+    this.presupuesto = presupuesto;
+    this.restante = restante;
+    this.alerta = alerta; 
+    console.log("Sincronizando datos")
   }
 }

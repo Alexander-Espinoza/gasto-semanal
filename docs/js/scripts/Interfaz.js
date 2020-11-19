@@ -56,6 +56,7 @@ class Interfaz {
       `;
     //Insrtar al HTML
     gastosListado.appendChild(li);
+    eliminarYa();
   }
   limpiarInputs() {
     document.getElementById("gasto").value = "";

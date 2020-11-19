@@ -1,5 +1,5 @@
 class Presupuesto {
-  constructor(presupuesto=0,restante=0) {
+  constructor(presupuesto = 0, restante = 0) {
     this.presupuesto = Number(presupuesto);
     this.restante = Number(restante);
     this.alerta = "baja";
@@ -12,12 +12,13 @@ class Presupuesto {
     return this.restante;
   }
   comprobarPresupuesto() {
+    console.log("Comprobando");
     if (this.restante < this.presupuesto / 4) {
       this.alerta = "alta";
-      
     } else if (this.restante < this.presupuesto / 2) {
       this.alerta = "media";
-      
+    } else {
+      this.alerta = "baja"
     }
   }
   /* leerLocal() {
@@ -25,7 +26,7 @@ class Presupuesto {
     this.restante = Number(localStorage.getItem("restante"));
     this.alerta = localStorage.getItem("alerta");
   } */
-/*   guardarLocal() {
+  /*   guardarLocal() {
     localStorage.setItem("presupuesto", this.presupuesto);
     localStorage.setItem("restante", this.restante);
     localStorage.setItem("alerta",this.alerta);

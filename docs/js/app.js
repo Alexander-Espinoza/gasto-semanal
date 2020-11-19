@@ -59,8 +59,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("submit", function (e) {
-  //e.preventDefault();
-
+  e.preventDefault();
+  
   const nombreGasto = document.getElementById("gasto").value;
   const cantidadGasto = document.getElementById("cantidad").value;
   const ui = new Interfaz();
