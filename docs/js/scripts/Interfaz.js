@@ -15,13 +15,13 @@ class Interfaz {
       restanteDiv.classList.remove("alert-success", "alert-warning");
       restanteDiv.classList.add("alert-danger");
     } else if (alerta === "media") {
-      restanteDiv.classList.remove("alert-success", "alert-warning");
+      restanteDiv.classList.remove("alert-danger", "alert-success");
       restanteDiv.classList.add("alert-warning");
     } else if (alerta === "baja") {
-      restanteDiv.classList.remove("alert-success", "alert-warning");
+      restanteDiv.classList.remove("alert-danger", "alert-warning");
       restanteDiv.classList.add("alert-success");
     }
-
+    console.log("alerta",alerta)
   }
   imprimirMensaje(mensaje, tipo) {
     const divMensaje = document.createElement("div");
